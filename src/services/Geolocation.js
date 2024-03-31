@@ -29,7 +29,7 @@ const GeolocationComponent = ({ onLocationFetch }) => {
 
     return (
         <> 
-        <button onClick={handleFetchLocation} className="flex justify-center items-center  h-2 mt-2 p-2  text-product-default rounded-lg">
+        <button onClick={handleFetchLocation} className=" border border-slate-50 flex justify-center items-center  h-4 mt-4 p-2  text-product-default rounded-lg">
             <FaMapMarkerAlt className="text-2xl" />
         </button>
         </>
