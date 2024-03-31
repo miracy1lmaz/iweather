@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-custom-background {
+  background-image: url('/img/Background.png');
+}
+
+
+/* Özel Spinner CSS */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border: 2px solid #f3f3f3; /* Light grey */
+ 
+}

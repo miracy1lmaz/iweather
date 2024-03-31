@@ -1,0 +1,57 @@
+"use client"
+import React, { useContext } from 'react';
+import Image from 'next/image';
+import WeatherContext from '@/context/WeatherContext';
+
+const CurrentWeather = () => {
+
+    const { weatherData, updateWeatherData } = useContext(WeatherContext);
+
+    const kelvinToCelsius = (kelvin) => {
+        return (kelvin - 273.15).toFixed(1).replace(/\.0$/, '');
+    };
+
+
+    const { name, main, weather, sys } = weatherData;
+    const now = new Date();
+    const formattedDate = new Intl.DateTimeFormat('en-GB', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+    }).format(now);
+
+    console.log(formattedDate); 
+    const sunrise = sys.sunrise;
+    const sunset = sys.sunset;
+    const moment = now >= sunrise && now < sunset ? 'Day' : 'Night';
+    const tempCelsius = kelvinToCelsius(main.temp);
+    const tempMin = kelvinToCelsius(main.temp_min);
+    const tempMax = kelvinToCelsius(main.temp_max);
+    const weatherCondition = weather[0].main.replace(' ', '');
+    const CurrentBg = `/img/currentBG/Weather=${weatherCondition}, Moment=${moment}.png`;
+    const iconFileName = `/img/currenticons/Weather=${weatherCondition}, Moment=${moment}.svg`;
+
+
+    return (
+        <div className="flex items-center justify-center mt-4">
+            <div className="relative border border-gray-800 p-2 rounded-lg bg-gray-800">
+                <Image src={CurrentBg} alt="Current Weather" className="rounded-lg " height={600} width={600} />
+                <div className="absolute top-4 left-4 p-4">
+                    <p className="text-white text-md font-bold">{name}</p>
+                    <p className="text-white text-xs mt-2">{formattedDate}</p>
+                </div>
+                <div className="absolute bottom-2 left-4 p-4">
+                    <p className="text-white text-xl font-bold mb-2">{tempCelsius}°c</p>
+                    <p className="text-white text-md">{tempMax}°C / {tempMin}°C</p>
+                    <p className="text-white text-sm mb-2">{weather[0].description}</p>
+                </div>
+                <div className="absolute" style={{ bottom: `calc(25px - 5%)`, right: 0, width: '50%' }}>
+                    <Image src={iconFileName} alt="Weather Icon" className="w-full max-w-[210px]" height={160} width={160} />
+                </div>
+
+            </div>
+        </div>
+    );
+}
+
+export default CurrentWeather;
