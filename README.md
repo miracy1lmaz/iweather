@@ -25,7 +25,7 @@ npm install
 ## How to Use
 Run the app locally:
 ```
-npm start
+npm run dev
 ```
 Navigate through the app to view current location weather or search for a city's weather.
 
