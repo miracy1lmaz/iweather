@@ -17,7 +17,11 @@ const Searchbar = () => {
         }
         return '';
     });
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> bbe0f2fb43ab1ba940ab9d9c39058abd7f402d1e
     const { updateWeatherData } = useContext(WeatherContext);
     const [loading, setLoading] = useState(false);
     const { suggestions, fetchWeatherData, fetchSuggestions } = useWeatherFetch(config.apiKey);
@@ -33,7 +37,11 @@ const Searchbar = () => {
         try {
             const fetchedSuggestions = await fetchSuggestions(location);
             if (fetchedSuggestions.length === 4) {
+<<<<<<< HEAD
                 // console.error("No results found for this location.");
+=======
+                console.error("No results found for this location.");
+>>>>>>> bbe0f2fb43ab1ba940ab9d9c39058abd7f402d1e
             }
         } catch (error) {
             // console.error('Error fetching suggestions:', error);

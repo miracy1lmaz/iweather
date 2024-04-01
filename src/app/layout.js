@@ -1,8 +1,13 @@
 import { Nunito } from "next/font/google";
 import "./globals.css";
 // import Header from "@/components/Header/Header";
+<<<<<<< HEAD
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';// import CurrentWeahter from "@/components/Forecast/CurrentWeather/CurrentWeahter";
+=======
+import 'react-toastify/dist/ReactToastify.css';
+// import CurrentWeahter from "@/components/Forecast/CurrentWeather/CurrentWeahter";
+>>>>>>> bbe0f2fb43ab1ba940ab9d9c39058abd7f402d1e
 // import WeatherDetails from "@/components/Forecast/WeatherDetails/WeatherDetails";
 // import Forecast from "@/components/Forecast/Forecast";
 import { WeatherProvider } from "@/context/WeatherContext";
