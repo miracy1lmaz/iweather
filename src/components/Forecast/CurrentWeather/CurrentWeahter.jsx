@@ -32,7 +32,7 @@ const CurrentWeather = () => {
     const tempMin = kelvinToCelsius(main.temp_min);
     const tempMax = kelvinToCelsius(main.temp_max);
     const weatherCondition = weather[0].main.replace(' ', '');
-    const CurrentBg = `/img/currentBG/Weather=${weatherCondition}, Moment=${moment}.png`;
+    const CurrentBg = `/img/currentBG/Weather=${weatherCondition}, Moment=${moment}.svg`;
     const iconFileName = `/img/currenticons/Weather=${weatherCondition}, Moment=${moment}.svg`;
 
 

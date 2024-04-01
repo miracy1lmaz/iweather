@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import axios from 'axios';
 import config from '@/app/config';
-import { getMaxListeners } from 'events';
 
 const GeolocationComponent = ({ onLocationFetch }) => {
     const handleFetchLocation = () => {
