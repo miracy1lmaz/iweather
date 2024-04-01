@@ -8,9 +8,8 @@ import config from '@/app/config';
 
 const WeatherForecast = () => {
   const { weatherData } = useContext(WeatherContext);
-
-  const forecast = useWeatherForecast(weatherData ? weatherData.name : null, config.apiKey);
-
+  const cityName = weatherData ? weatherData.name : null;
+  const forecast = useWeatherForecast(cityName, config.apiKey)
 
   if (!forecast || forecast.length === 0) {
     return <div>Loading forecast...</div>;
@@ -32,7 +31,7 @@ const WeatherForecast = () => {
             <Image
               src={iconFileName}
               alt={item.weather[0].description}
-              width={64}
+              width={75}
               height={56}
             />
             <p className='text-gray-100 text-sm'>{temp}°C</p>

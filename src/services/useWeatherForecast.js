@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import config from '@/app/config'; 
+import config from '@/app/config';
 
 const useWeatherForecast = (cityName) => {
     const [forecast, setForecast] = useState([]);
@@ -15,10 +15,10 @@ const useWeatherForecast = (cityName) => {
                     const dailyForecasts = allForecasts.reduce((acc, item) => {
                         const date = new Date(item.dt * 1000).toDateString();
                         if (!acc[date]) {
-                            acc[date] = { ...item, temp_max: item.main.temp, temp_min: item.main.temp };
+                            acc[date] = { ...item, temp_max: item.main.temp_max, temp_min: item.main.temp_min };
                         } else {
-                            acc[date].temp_max = Math.max(acc[date].temp_max, item.main.temp);
-                            acc[date].temp_min = Math.min(acc[date].temp_min, item.main.temp);
+                            acc[date].temp_max = Math.max(acc[date].temp_max, item.main.temp_max);
+                            acc[date].temp_min = Math.min(acc[date].temp_min, item.main.temp_min);
                         }
                         return acc;
                     }, {});
@@ -26,6 +26,7 @@ const useWeatherForecast = (cityName) => {
                     setForecast(Object.values(dailyForecasts).slice(0, 5));
                 } catch (error) {
                     console.error('Error fetching forecast data:', error);
+                    setForecast([]);
                 }
             };
 

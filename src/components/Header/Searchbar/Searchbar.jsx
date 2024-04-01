@@ -19,11 +19,22 @@ const Searchbar = () => {
         localStorage.setItem('lastSearch', inputValue);
     }, [inputValue]);
 
-    const handleLocationFetch = (location) => {
-        if (inputValue.trim() === '') {
-            setInputValue(location);
+    const handleLocationFetch = async (location) => {
+        setInputValue(location);
+        setLoading(true);
+        try {
+            const fetchedSuggestions = await fetchSuggestions(location);
+            if (fetchedSuggestions.length === 0) {
+                console.error("No results found for this location.");
+            }
+        } catch (error) {
+            console.error('Error fetching suggestions:', error);
+            console.error("Error fetching location data.");
+        } finally {
+            setLoading(false);
         }
     };
+    
 
 
     const handleChange = async (event) => {
@@ -66,7 +77,7 @@ const Searchbar = () => {
                     (
                         <div className="absolute bg-gray-500 mt-1 rounded-lg shadow-lg w-full z-10">
                             {suggestions.map((suggestion, index) => (
-                                <Link key={index} href="/Detail" passHref>
+                                <Link key={index} href="/Detail">
                                     <div className="text-white py-4 px-4 cursor-pointer" onClick={() => handleSelect(suggestion)}>
                                         {suggestion}
                                     </div>

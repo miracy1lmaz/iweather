@@ -41,4 +41,3 @@ export default GeolocationComponent;
 
 
 
-// Konum doldugunda, otomatik olarak listesi gelsin

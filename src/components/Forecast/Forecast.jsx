@@ -2,7 +2,7 @@ import React from 'react'
 import CurrentWeahter from './CurrentWeather/CurrentWeahter'
 import WeatherDetails from './WeatherDetails/WeatherDetails'
 import WeeklyForecast from './WeeklyForecast/WeeklyForecast'
-import BackButton from '../Back'
+import BackButton from '../backButton'
 
 const Forecast = () => {
     return (
@@ -11,7 +11,7 @@ const Forecast = () => {
             <div className="w-full">
                 <CurrentWeahter  />
                 <WeatherDetails />
-                <WeeklyForecast/>
+                <WeeklyForecast />
             </div>
 
 

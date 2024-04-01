@@ -5,22 +5,21 @@ import WeatherContext from '@/context/WeatherContext';
 
 const CurrentWeather = () => {
 
-    const { weatherData, updateWeatherData } = useContext(WeatherContext);
+    const { weatherData } = useContext(WeatherContext);
 
     const kelvinToCelsius = (kelvin) => {
         return (kelvin - 273.15).toFixed(1).replace(/\.0$/, '');
     };
 
-
     const { name, main, weather, sys } = weatherData;
     const now = new Date();
-    const formattedDate = new Intl.DateTimeFormat('en-GB', {
-        day: '2-digit',
+    const formattedDate = new Intl.DateTimeFormat('en-US', {
+        weekday: 'long',
         month: 'long',
+        day: 'numeric',
         year: 'numeric'
     }).format(now);
 
-    console.log(formattedDate); 
     const sunrise = sys.sunrise;
     const sunset = sys.sunset;
     const moment = now >= sunrise && now < sunset ? 'Day' : 'Night';
@@ -41,9 +40,11 @@ const CurrentWeather = () => {
                     <p className="text-white text-xs mt-2">{formattedDate}</p>
                 </div>
                 <div className="absolute bottom-2 left-4 p-4">
-                    <p className="text-white text-xl font-bold mb-2">{tempCelsius}°c</p>
-                    <p className="text-white text-md">{tempMax}°C / {tempMin}°C</p>
-                    <p className="text-white text-sm mb-2">{weather[0].description}</p>
+                    <p className="text-white text-xl font-bold mb-3">{tempCelsius}°c</p>
+                    <p className="text-white text-md">{tempMax}°c / {tempMin}°c</p>
+                    <p className="text-white text-sm mb-2">
+                        {weather[0].description.split(' ').map(word => word[0].toUpperCase() + word.substring(1)).join(' ')}
+                    </p>
                 </div>
                 <div className="absolute" style={{ bottom: `calc(25px - 5%)`, right: 0, width: '50%' }}>
                     <Image src={iconFileName} alt="Weather Icon" className="w-full max-w-[210px]" height={160} width={160} />
