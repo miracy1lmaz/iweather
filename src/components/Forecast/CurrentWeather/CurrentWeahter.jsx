@@ -5,24 +5,17 @@ import WeatherContext from '@/context/WeatherContext';
 
 const CurrentWeather = () => {
 
-
-
     const { weatherData } = useContext(WeatherContext);
-
 
     if (!weatherData) {
         return <div>Loading weather data or data not available...</div>;
     }
 
     const { name, main, weather, sys } = weatherData;
-
     const sunrise = new Date(sys.sunrise * 1000);
     const sunset = new Date(sys.sunset * 1000);
     const now = new Date();
     const moment = now >= sunrise && now < sunset ? 'Day' : 'Night';
-
-
-
 
     const formattedDate = new Intl.DateTimeFormat('en-US', {
         weekday: 'long',
@@ -35,16 +28,12 @@ const CurrentWeather = () => {
         return (kelvin - 273.15).toFixed(1).replace(/\.0$/, '');
     };
 
-
-
-
     const tempCelsius = kelvinToCelsius(main.temp);
     const tempMin = kelvinToCelsius(main.temp_min);
     const tempMax = kelvinToCelsius(main.temp_max);
     const weatherCondition = weather[0].main.replace(' ', '');
     const CurrentBg = `/img/currentBG/Weather=${weatherCondition}, Moment=${moment}.svg`;
     const iconFileName = `/img/currenticons/Weather=${weatherCondition}, Moment=${moment}.svg`;
-
 
     return (
         <div className="flex items-center justify-center mt-4">

@@ -1,8 +1,8 @@
 import { Nunito } from "next/font/google";
 import "./globals.css";
 // import Header from "@/components/Header/Header";
-import 'react-toastify/dist/ReactToastify.css';
-// import CurrentWeahter from "@/components/Forecast/CurrentWeather/CurrentWeahter";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';// import CurrentWeahter from "@/components/Forecast/CurrentWeather/CurrentWeahter";
 // import WeatherDetails from "@/components/Forecast/WeatherDetails/WeatherDetails";
 // import Forecast from "@/components/Forecast/Forecast";
 import { WeatherProvider } from "@/context/WeatherContext";
@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
 
         <div>
+        <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
           <WeatherProvider>
             {children}
           </WeatherProvider>

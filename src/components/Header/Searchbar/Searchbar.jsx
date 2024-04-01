@@ -6,6 +6,7 @@ import WeatherContext from '@/context/WeatherContext';
 import { FaSpinner } from 'react-icons/fa';
 import useWeatherFetch from '@/services/useWeatherService';
 import config from '@/app/config';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Searchbar = () => {
@@ -16,7 +17,7 @@ const Searchbar = () => {
         }
         return '';
     });
-    
+
     const { updateWeatherData } = useContext(WeatherContext);
     const [loading, setLoading] = useState(false);
     const { suggestions, fetchWeatherData, fetchSuggestions } = useWeatherFetch(config.apiKey);
@@ -32,11 +33,11 @@ const Searchbar = () => {
         try {
             const fetchedSuggestions = await fetchSuggestions(location);
             if (fetchedSuggestions.length === 4) {
-                console.error("No results found for this location.");
+                // console.error("No results found for this location.");
             }
         } catch (error) {
-            console.error('Error fetching suggestions:', error);
-            console.error("Error fetching location data.");
+            // console.error('Error fetching suggestions:', error);
+            // console.error("Error fetching location data.");
         } finally {
             setLoading(false);
         }
@@ -55,6 +56,7 @@ const Searchbar = () => {
         setLoading(true);
         const data = await fetchWeatherData(location);
         updateWeatherData(data);
+        toast.info('City successfully updated!');
         setLoading(false);
     };
 

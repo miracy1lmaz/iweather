@@ -18,6 +18,7 @@ const WeatherForecast = () => {
   return (
     <div className='w-full bg-gray-800 rounded-lg mt-2 p-2 flex justify-around'>
       {forecast.map((item, index) => {
+        
         const temp = (item.temp_max - 273.15).toFixed(1); 
         const temp_min = (item.temp_min - 273.15).toFixed(1); 
         const weatherCondition = item.weather[0].main.replace(/\s+/g, '');
