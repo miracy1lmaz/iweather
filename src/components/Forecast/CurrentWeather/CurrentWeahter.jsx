@@ -5,19 +5,16 @@ import WeatherContext from '@/context/WeatherContext';
 
 const CurrentWeather = () => {
 
+
+
+
     const { weatherData } = useContext(WeatherContext);
-
-    if (!weatherData) {
-        console.error('Weather data is not available');
-        return null; 
-    }
-
-    const kelvinToCelsius = (kelvin) => {
-        return (kelvin - 273.15).toFixed(1).replace(/\.0$/, '');
-    };
-
     const { name, main, weather, sys } = weatherData;
+    const sunrise = new Date(sys.sunrise * 1000);
+    const sunset = new Date(sys.sunset * 1000);
     const now = new Date();
+    const moment = now >= sunrise && now < sunset ? 'Day' : 'Night';
+
     const formattedDate = new Intl.DateTimeFormat('en-US', {
         weekday: 'long',
         month: 'long',
@@ -25,9 +22,10 @@ const CurrentWeather = () => {
         year: 'numeric'
     }).format(now);
 
-    const sunrise = sys.sunrise;
-    const sunset = sys.sunset;
-    const moment = now >= sunrise && now < sunset ? 'Day' : 'Night';
+    const kelvinToCelsius = (kelvin) => {
+        return (kelvin - 273.15).toFixed(1).replace(/\.0$/, '');
+    };
+
     const tempCelsius = kelvinToCelsius(main.temp);
     const tempMin = kelvinToCelsius(main.temp_min);
     const tempMax = kelvinToCelsius(main.temp_max);
@@ -35,6 +33,11 @@ const CurrentWeather = () => {
     const CurrentBg = `/img/currentBG/Weather=${weatherCondition}, Moment=${moment}.svg`;
     const iconFileName = `/img/currenticons/Weather=${weatherCondition}, Moment=${moment}.svg`;
 
+
+    if (!weatherData) {
+        console.error('Weather data is not available');
+        return null;
+    }
 
     return (
         <div className="flex items-center justify-center mt-4">

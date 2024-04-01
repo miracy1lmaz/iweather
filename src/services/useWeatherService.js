@@ -5,6 +5,7 @@ const useWeatherFetch = (apiKey) => {
     const [loading, setLoading] = useState(false);
     const [suggestions, setSuggestions] = useState([]);
 
+
     const fetchWeatherData = async (location) => {
         setLoading(true);
         try {

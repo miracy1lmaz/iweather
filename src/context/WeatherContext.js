@@ -19,6 +19,7 @@ export const WeatherProvider = ({ children }) => {
         setWeatherData(newData);
     };
 
+
     return (
         <WeatherContext.Provider value={{ weatherData, updateWeatherData }}>
             {children}

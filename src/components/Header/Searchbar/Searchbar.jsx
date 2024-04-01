@@ -17,6 +17,7 @@ const Searchbar = () => {
         return '';
     });
     const { updateWeatherData } = useContext(WeatherContext);
+
     const [loading, setLoading] = useState(false);
     const { suggestions, fetchWeatherData, fetchSuggestions } = useWeatherFetch(config.apiKey);
 
@@ -40,7 +41,7 @@ const Searchbar = () => {
             setLoading(false);
         }
     };
-    
+
 
 
     const handleChange = async (event) => {
@@ -56,6 +57,7 @@ const Searchbar = () => {
         updateWeatherData(data);
         setLoading(false);
     };
+
 
     return (
 
