@@ -1,9 +1,8 @@
 # Weather App
+![iweather](https://github.com/miracy1lmaz/iweather/assets/76847694/d77a0ec6-e121-465f-a394-c30ace7c2c2a)
 
-](https://wwvweatherappp.netlify.app/)
 ## Demo: 
-https://vermillion-youtiao-ff309e.netlify.app
-
+https://wwvweatherappp.netlify.app/
 ## Overview
 This Weather App provides real-time weather information based on the user's current location or searched city. Utilizing the OpenWeatherMap API, it offers accurate weather forecasts, including temperature, humidity, wind speed, and more.
 
