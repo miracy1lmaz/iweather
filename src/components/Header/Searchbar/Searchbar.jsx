@@ -5,20 +5,26 @@ import GeolocationComponent from '@/services/Geolocation';
 import WeatherContext from '@/context/WeatherContext';
 import { FaSpinner } from 'react-icons/fa';
 import useWeatherFetch from '@/services/useWeatherService';
-import { toast } from 'react-toastify';
 import config from '@/app/config';
 
 
 const Searchbar = () => {
-    const [inputValue, setInputValue] = useState(() => localStorage.getItem('lastSearch') || '');
+
+    const [inputValue, setInputValue] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('lastSearch') || '';
+        }
+        return '';
+    });
     const { updateWeatherData } = useContext(WeatherContext);
     const [loading, setLoading] = useState(false);
     const { suggestions, fetchWeatherData, fetchSuggestions } = useWeatherFetch(config.apiKey);
 
     useEffect(() => {
-        localStorage.setItem('lastSearch', inputValue);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('lastSearch', inputValue);
+        }
     }, [inputValue]);
-
     const handleLocationFetch = async (location) => {
         setInputValue(location);
         setLoading(true);

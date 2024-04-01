@@ -7,6 +7,11 @@ const CurrentWeather = () => {
 
     const { weatherData } = useContext(WeatherContext);
 
+    if (!weatherData) {
+        console.error('Weather data is not available');
+        return null; 
+    }
+
     const kelvinToCelsius = (kelvin) => {
         return (kelvin - 273.15).toFixed(1).replace(/\.0$/, '');
     };

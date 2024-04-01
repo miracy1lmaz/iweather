@@ -5,12 +5,17 @@ const WeatherContext = createContext();
 
 export const WeatherProvider = ({ children }) => {
     const [weatherData, setWeatherData] = useState(() => {
-        const storedData = localStorage.getItem('weatherData');
-        return storedData ? JSON.parse(storedData) : null;
+        if (typeof window !== 'undefined') {
+            const storedData = localStorage.getItem('weatherData');
+            return storedData ? JSON.parse(storedData) : null;
+        }
+        return null;
     });
 
     const updateWeatherData = (newData) => {
-        localStorage.setItem('weatherData', JSON.stringify(newData));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('weatherData', JSON.stringify(newData));
+        }
         setWeatherData(newData);
     };
 
