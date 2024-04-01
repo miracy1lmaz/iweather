@@ -29,7 +29,7 @@ module.exports = {
       },
       colors: {
         'product': {
-          'default': '#8FB2F5', // 'blue-light' olarak adlandırılmış
+          'default': '#8FB2F5', 
         },
         'gray': {
           '950':'#1E1E29',
@@ -42,12 +42,9 @@ module.exports = {
           '300': '#ABABC4',
           '200': '#BFBFD4',
           '100': '#FAFAFA',
-          '50': '#FFFFFF', // 'white' olarak adlandırılmış
+          '50': '#FFFFFF', 
         },
-        // Özel bir arka plan rengi ekleyebilirsiniz
-        'background': {
-          'default': '#RENK_KODU', // Gerçek rengin hex kodunu buraya girin
-        },
+       
       },
     },
   },
