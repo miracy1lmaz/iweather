@@ -1,4 +1,5 @@
 # Weather App
+![Iweather](https://github.com/miracy1lmaz/iweather/assets/76847694/c2e01c70-17c2-42f8-b59c-e1ed81617a49)
 
 ## Overview
 This Weather App provides real-time weather information based on the user's current location or searched city. Utilizing the OpenWeatherMap API, it offers accurate weather forecasts, including temperature, humidity, wind speed, and more.
