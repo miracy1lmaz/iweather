@@ -16,8 +16,8 @@ const Searchbar = () => {
         }
         return '';
     });
+    
     const { updateWeatherData } = useContext(WeatherContext);
-
     const [loading, setLoading] = useState(false);
     const { suggestions, fetchWeatherData, fetchSuggestions } = useWeatherFetch(config.apiKey);
 
@@ -31,7 +31,7 @@ const Searchbar = () => {
         setLoading(true);
         try {
             const fetchedSuggestions = await fetchSuggestions(location);
-            if (fetchedSuggestions.length === 0) {
+            if (fetchedSuggestions.length === 4) {
                 console.error("No results found for this location.");
             }
         } catch (error) {
@@ -43,13 +43,13 @@ const Searchbar = () => {
     };
 
 
-
     const handleChange = async (event) => {
         const value = event.target.value;
         setInputValue(value);
         await fetchSuggestions(value);
 
     };
+
 
     const handleSelect = async (location) => {
         setLoading(true);
@@ -75,7 +75,7 @@ const Searchbar = () => {
 
                 {loading && (
                     <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
-                        <FaSpinner className="animate-spin text-white" size={24} />
+                        <FaSpinner className="animate-spin text-gray-200" size={24} />
                     </div>
                 )}
 
