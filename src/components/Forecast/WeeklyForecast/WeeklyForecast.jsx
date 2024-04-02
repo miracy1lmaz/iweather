@@ -9,9 +9,10 @@ import config from '@/app/config';
 const WeatherForecast = () => {
   const { weatherData } = useContext(WeatherContext);
 
-  const dt = weatherData.dt;
-  const timezone = weatherData.timezone
+  const dt = weatherData ? weatherData.dt : null;
+  const timezone = weatherData ? weatherData.timezone : null
   const cityName = weatherData ? weatherData.name : null;
+
   const forecast = useWeatherForecast(cityName, dt, timezone, config.apiKey)
 
 
