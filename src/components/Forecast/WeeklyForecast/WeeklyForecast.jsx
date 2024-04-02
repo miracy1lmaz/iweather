@@ -23,7 +23,7 @@ const WeatherForecast = () => {
   const isDaytime = (timestamp) => {
     const localTime = new Date((timestamp + timezone) * 1000);
     const hours = localTime.getUTCHours();
-    return hours >= 6 && hours < 18;
+    return hours >= 7 && hours < 18;
   };
 
   return (
