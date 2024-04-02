@@ -46,8 +46,8 @@ const CurrentWeather = () => {
                 </div>
                 <div className="absolute bottom-2 left-4 p-4">
                     <p className="text-white text-xl font-bold mb-3">{tempCelsius}°c</p>
-                    <p className="text-white text-md">{tempMax}°c / {tempMin}°c</p>
-                    <p className="text-white text-sm mb-2">
+                    <p className="text-white text-md font-bold">{tempMax}°c / {tempMin}°c</p>
+                    <p className="text-white text-sm mb-2 font-bold">
                         {weather[0].description.split(' ').map(word => word[0].toUpperCase() + word.substring(1)).join(' ')}
                     </p>
                 </div>
