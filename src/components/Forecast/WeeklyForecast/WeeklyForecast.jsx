@@ -10,24 +10,27 @@ import config from '@/app/config';
 const WeatherForecast = () => {
   const { weatherData } = useContext(WeatherContext);
   const dt = weatherData ? weatherData.dt : null;
-  const timezone = weatherData ? weatherData.timezone : null
   const cityName = weatherData ? weatherData.name : null;
-  const forecast = useWeatherForecast(cityName, dt, timezone, config.apiKey)
+  const forecast = useWeatherForecast(cityName, config.apiKey)
+
 
   if (!forecast || forecast.length === 0) {
     return <div>Loading forecast...</div>;
   }
 
-  const isDaytime = (timestamp) => {
+  const isDaytime = (timestamp, weatherData) => {
     const localTime = new Date(timestamp * 1000);
-    const sunriseTime = new Date(weatherData.sunrise * 1000);
-    const sunsetTime = new Date(weatherData.sunset * 1000);
-    const hours = localTime.getHours();
+    const sunriseTime = new Date(weatherData.sys.sunrise * 1000);
+    const sunsetTime = new Date(weatherData.sys.sunset * 1000);
 
-    return hours >= sunriseTime.getHours() && hours < sunsetTime.getHours();
-  };
+    const isInDaytime = localTime >= sunriseTime && localTime < sunsetTime;
 
-  const moment = isDaytime(dt) ? 'Day' : 'Night';
+    return isInDaytime;
+};
+
+
+
+const moment = isDaytime(dt, weatherData) ? 'Day' : 'Night';
 
   return (
     <div className='w-full bg-gray-800 rounded-lg mt-2 p-2 flex justify-around'>
