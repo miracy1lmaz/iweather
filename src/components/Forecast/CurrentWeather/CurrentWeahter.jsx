@@ -23,10 +23,11 @@ const CurrentWeather = () => {
         day: 'numeric',
         year: 'numeric'
     }).format(now);
-
-    const kelvinToCelsius = (kelvin) => {
-        return (kelvin - 273.15).toFixed(1).replace(/\.0$/, '');
-    };
+    
+    function kelvinToCelsius(kelvin) {
+        return Math.round(kelvin - 273.15);
+    }
+    
 
     const tempCelsius = kelvinToCelsius(main.temp);
     const tempMin = kelvinToCelsius(main.temp_min);

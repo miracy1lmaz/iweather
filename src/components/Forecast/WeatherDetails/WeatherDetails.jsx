@@ -19,7 +19,7 @@ const WeatherDetails = () => {
                 <div key={index} className='flex items-center justify-between w-full max-w-md rounded-lg px-4 py-2 '>
                     <div className='flex items-center space-x-4'>
                         <img src={detail.icon} alt={`${detail.name} Icon`} width="24" height="24" />
-                        <p className='text-gray-200 text-sm'>{detail.name}</p>
+                        <p className='text-gray-200 text-sm font-bold'>{detail.name}</p>
                     </div>
                     <p className='text-gray-100 text-md font-bold '>{detail.value}</p>
                 </div>
