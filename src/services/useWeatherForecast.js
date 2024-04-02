@@ -23,7 +23,7 @@ const useWeatherForecast = (cityName,dt,timezone) => {
                         return acc;
                     }, {});
 
-                    setForecast(Object.values(dailyForecasts).slice(1, 6));
+                    setForecast(Object.values(dailyForecasts).slice(0, 5));
                 } catch (error) {
                     // console.error('Error fetching forecast data:', error);
                     setForecast([]);
