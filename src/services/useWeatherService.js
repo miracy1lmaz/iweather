@@ -1,8 +1,7 @@
-import { useState,useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import axios from 'axios';
 import debounce from '@/hooks/debounce';
-import { toast } from 'react-toastify'; 
-
+import { toast } from 'react-toastify';
 const useWeatherFetch = (apiKey) => {
     const [loading, setLoading] = useState(false);
     const [suggestions, setSuggestions] = useState([]);
@@ -19,6 +18,7 @@ const useWeatherFetch = (apiKey) => {
         }
     };
 
+
     const debouncedFetchSuggestions = useCallback(debounce(async (query) => {
         if (query.length <= 1) {
             setSuggestions([]);
@@ -30,7 +30,7 @@ const useWeatherFetch = (apiKey) => {
             const data = response.data;
             const location = `${data.name}, ${data.sys.country}`;
             setSuggestions([location]);
-        } 
+        }
         catch (error) {
             if (error.response && error.response.status === 404) {
                 toast.error('Location not found. Please try a different search.');

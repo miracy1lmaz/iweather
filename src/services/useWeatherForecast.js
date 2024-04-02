@@ -4,6 +4,7 @@ import config from '@/app/config';
 
 const useWeatherForecast = (cityName) => {
     const [forecast, setForecast] = useState([]);
+ 
     useEffect(() => {
         if (cityName) {
             const fetchForecast = async () => {
