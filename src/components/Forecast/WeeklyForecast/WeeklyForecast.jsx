@@ -6,25 +6,28 @@ import useWeatherForecast from '@/services/useWeatherForecast';
 import config from '@/app/config';
 
 
+
 const WeatherForecast = () => {
   const { weatherData } = useContext(WeatherContext);
-
   const dt = weatherData ? weatherData.dt : null;
   const timezone = weatherData ? weatherData.timezone : null
   const cityName = weatherData ? weatherData.name : null;
-
   const forecast = useWeatherForecast(cityName, dt, timezone, config.apiKey)
-
 
   if (!forecast || forecast.length === 0) {
     return <div>Loading forecast...</div>;
   }
 
   const isDaytime = (timestamp) => {
-    const localTime = new Date((timestamp + timezone) * 1000);
-    const hours = localTime.getUTCHours();
-    return hours >= 6 && hours < 18;
+    const localTime = new Date(timestamp * 1000);
+    const sunriseTime = new Date(weatherData.sunrise * 1000);
+    const sunsetTime = new Date(weatherData.sunset * 1000);
+    const hours = localTime.getHours();
+
+    return hours >= sunriseTime.getHours() && hours < sunsetTime.getHours();
   };
+
+  const moment = isDaytime(dt) ? 'Day' : 'Night';
 
   return (
     <div className='w-full bg-gray-800 rounded-lg mt-2 p-2 flex justify-around'>
@@ -33,7 +36,6 @@ const WeatherForecast = () => {
         const temp = (item.temp_max - 273.15).toFixed(1);
         const temp_min = (item.temp_min - 273.15).toFixed(1);
         const weatherCondition = item.weather[0].main.replace(/\s+/g, '');
-        const moment = isDaytime(item.dt) ? 'Day' : 'Night';
         const iconFileName = `/img/currenticons/Weather=${weatherCondition}, Moment=${moment}.svg`;
         const day = new Date(item.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' });
 

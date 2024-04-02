@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from '@/app/config';
 
-const useWeatherForecast = (cityName) => {
+const useWeatherForecast = (cityName,dt,timezone) => {
     const [forecast, setForecast] = useState([]);
  
     useEffect(() => {
@@ -23,7 +23,7 @@ const useWeatherForecast = (cityName) => {
                         return acc;
                     }, {});
 
-                    setForecast(Object.values(dailyForecasts).slice(0, 5));
+                    setForecast(Object.values(dailyForecasts).slice(1, 6));
                 } catch (error) {
                     // console.error('Error fetching forecast data:', error);
                     setForecast([]);
