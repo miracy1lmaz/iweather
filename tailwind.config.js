@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontSize: {
         'xs': ['12px', { lineHeight: '140%'}],
-        'sm': ['14px', { lineHeight: '140%'}],
+        'sm': ['16px', { lineHeight: '140%'}],
         'md': ['16px', { lineHeight: '140%'}],
         'lg': ['32px', { lineHeight: '140%'}],
         'xl': ['48px', { lineHeight: '120%'}],
