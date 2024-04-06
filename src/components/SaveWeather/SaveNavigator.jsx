@@ -17,7 +17,7 @@ const SavedCitiesNavigator = () => {
     };
 
     return (
-        <div className="saved-cities-navigator bg-gray-800 text-white pt-4 sm:pt-8 px-2 sm:px-4 rounded-lg shadow-md">
+        <div className="saved-cities-navigator bg-gray-800 text-white p-4 sm:pt-4 px-2 sm:px-4 rounded-lg shadow-md">
             <div>
                 <button onClick={toggleDropdown} className="flex items-center justify-between w-full text-base sm:text-lg font-bold mb-1 sm:mb-2">
                     Kaydedilen Konumlar
