@@ -34,6 +34,7 @@ const moment = isDaytime(dt, weatherData) ? 'Day' : 'Night';
 
   return (
     <div className='w-full bg-gray-800 rounded-lg mt-2 p-2 flex justify-around'>
+      
       {forecast.map((item, index) => {
 
         const temp = Math.round(item.temp_max - 273.15);

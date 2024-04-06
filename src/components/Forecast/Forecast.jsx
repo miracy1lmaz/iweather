@@ -3,13 +3,17 @@ import CurrentWeahter from './CurrentWeather/CurrentWeahter'
 import WeatherDetails from './WeatherDetails/WeatherDetails'
 import WeeklyForecast from './WeeklyForecast/WeeklyForecast'
 import BackButton from '../backButton'
+import SaveForecast from '../SaveWeather/SaveForecast'
+import SavedCitiesNavigator from '../SaveWeather/SaveNavigator'
 
 const Forecast = () => {
     return (
         <div className='container'>
-            <BackButton/>
+            <BackButton />
+
             <div className="w-full">
-                <CurrentWeahter  />
+                <SavedCitiesNavigator />
+                <CurrentWeahter />
                 <WeatherDetails />
                 <WeeklyForecast />
             </div>

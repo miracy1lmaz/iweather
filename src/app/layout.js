@@ -20,8 +20,10 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
 
         <div>
+    
         <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-          <WeatherProvider>
+        <WeatherProvider>
+
             {children}
           </WeatherProvider>
 

@@ -4,6 +4,9 @@ import React, { createContext, useState } from 'react';
 const WeatherContext = createContext();
 
 export const WeatherProvider = ({ children }) => {
+
+    const [savedForecasts, setSavedForecasts] = useState([]);
+
     const [weatherData, setWeatherData] = useState(() => {
         if (typeof window !== 'undefined') {
             const storedData = localStorage.getItem('weatherData');
@@ -19,9 +22,19 @@ export const WeatherProvider = ({ children }) => {
         setWeatherData(newData);
     };
 
+    const saveForecast = (forecast) => {
+        setSavedForecasts([...savedForecasts, forecast]);
+    };
+
+    const removeForecast = (forecastToRemove) => {
+        setSavedForecasts(currentForecasts =>
+            currentForecasts.filter(forecast => forecast.name !== forecastToRemove.name)
+        );
+    };
+    
 
     return (
-        <WeatherContext.Provider value={{ weatherData, updateWeatherData }}>
+        <WeatherContext.Provider value={{ weatherData, updateWeatherData,savedForecasts, saveForecast, removeForecast}}>
             {children}
         </WeatherContext.Provider>
     );

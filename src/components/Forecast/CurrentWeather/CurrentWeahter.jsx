@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import Image from 'next/image';
 import WeatherContext from '@/context/WeatherContext';
+import SaveForecast from '../../SaveWeather/SaveForecast';
 
 const CurrentWeather = () => {
 
@@ -23,11 +24,11 @@ const CurrentWeather = () => {
         day: 'numeric',
         year: 'numeric'
     }).format(now);
-    
+
     function kelvinToCelsius(kelvin) {
         return Math.round(kelvin - 273.15);
     }
-    
+
 
     const tempCelsius = kelvinToCelsius(main.temp);
     const tempMin = kelvinToCelsius(main.temp_min);
@@ -38,12 +39,19 @@ const CurrentWeather = () => {
 
     return (
         <div className="flex items-center justify-center mt-4">
+
             <div className="relative border border-gray-800 p-2 rounded-lg bg-gray-800">
+                <SaveForecast />
+
                 <Image src={CurrentBg} alt="Current Weather" className="rounded-lg " height={600} width={600} />
+
                 <div className="absolute top-4 left-4 p-4">
+
                     <p className="text-white text-md font-bold">{name}</p>
                     <p className="text-white text-xs mt-2">{formattedDate}</p>
                 </div>
+
+
                 <div className="absolute bottom-2 left-4 p-4">
                     <p className="text-white text-xl font-bold mb-3">{tempCelsius}°c</p>
                     <p className="text-white text-md font-bold">{tempMax}°c / {tempMin}°c</p>
