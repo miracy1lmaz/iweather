@@ -55,7 +55,7 @@ const Searchbar = () => {
         setLoading(true);
         const data = await fetchWeatherData(location);
         updateWeatherData(data);
-        toast.info('City successfully updated!');
+        toast.success('City successfully updated!');
         setLoading(false);
     };
 
