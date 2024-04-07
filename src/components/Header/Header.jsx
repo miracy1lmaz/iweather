@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import Searchbar from './Searchbar/Searchbar'
@@ -16,7 +17,7 @@ const Header = () => {
             Choose a location to see the weather forecast
           </p>
           <div className="w-full max-w-md mt-6">
-          <Searchbar/>
+         <Searchbar/>
           </div>
         </div>
       </div>

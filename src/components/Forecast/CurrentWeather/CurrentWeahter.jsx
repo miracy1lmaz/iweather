@@ -29,7 +29,6 @@ const CurrentWeather = () => {
         return Math.round(kelvin - 273.15);
     }
 
-
     const tempCelsius = kelvinToCelsius(main.temp);
     const tempMin = kelvinToCelsius(main.temp_min);
     const tempMax = kelvinToCelsius(main.temp_max);
@@ -44,7 +43,6 @@ const CurrentWeather = () => {
                 <SaveForecast />
 
                 <Image src={CurrentBg} alt="Current Weather" className="rounded-lg " height={600} width={600} />
-
                 <div className="absolute top-4 left-4 p-4">
 
                     <p className="text-white text-md font-bold">{name}</p>
