@@ -25,7 +25,7 @@ const SavedCitiesNavigator = () => {
         <div className="saved-cities-navigator bg-gray-800 text-white p-4 sm:pt-4 px-2 sm:px-4 rounded-lg shadow-md">
             <div>
                 <button onClick={toggleDropdown} className="flex items-center justify-between w-full text-base sm:text-md font-bold mb-1 sm:mb-2">
-                    Kaydedilen Konumlar
+                    Saved Locations
                     {isOpen ? <IoIosArrowUp className="ml-2" /> : <IoIosArrowDown className="ml-2" />}
                 </button>
             </div>
@@ -44,7 +44,7 @@ const SavedCitiesNavigator = () => {
                 </ul>
             )}
             {!isOpen && savedForecasts.length === 0 && (
-                <p className='text-gray-200'>Henüz kaydedilmiş şehir yok.</p>
+                <p className='text-gray-200'>No cities saved yet.</p>
             )}
         </div>
 
